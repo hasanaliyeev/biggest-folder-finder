@@ -1,5 +1,8 @@
 import java.io.File;
+import java.nio.file.Files;
+import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.ForkJoinPool;
 
 public class Main {
 
@@ -8,7 +11,14 @@ public class Main {
     String folderPath = "C:/Users/aliye/Desktop/Programs";
     File file = new File(folderPath);
 
-    System.out.println("Размер: " + getFolderSize(file));
+    long start = System.currentTimeMillis();
+
+    FolderSizeCalculator calculator = new FolderSizeCalculator(file);
+    ForkJoinPool pool = new ForkJoinPool();
+    long size = pool.invoke(calculator);
+    System.out.println("Size: " + size);
+    long duration = (System.currentTimeMillis() - start);
+    System.out.println(duration + " ms");
 
   }
 
