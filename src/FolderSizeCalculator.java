@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.RecursiveTask;
-import org.w3c.dom.Node;
 
 public class FolderSizeCalculator extends RecursiveTask<Long> {
 
